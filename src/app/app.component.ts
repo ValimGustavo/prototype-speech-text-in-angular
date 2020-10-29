@@ -1,3 +1,4 @@
+import { SpeechTextService } from './services/speech-text/speech-text.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,9 +11,11 @@ export class AppComponent {
   title = 'speech-text';
   text = ''
 
+  constructor(
+    private speechTextService:SpeechTextService
+  ){}
+
   speak(){
-    let utterance = new SpeechSynthesisUtterance(this.text);
-    utterance.lang = 'pt-BR'
-    speechSynthesis.speak(utterance);
+   this.speechTextService.speak(this.text)
   }
 }
